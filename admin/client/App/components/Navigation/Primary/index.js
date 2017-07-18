@@ -73,7 +73,7 @@ var PrimaryNavigation = React.createClass({
 
 		const { brand, currentSectionKey } = this.props;
 		const className = currentSectionKey === 'dashboard' ? 'primary-navbar__brand primary-navbar__item--active' : 'primary-navbar__brand';
-		let logo = { src: '/logoAdmin.png', height: 40 };
+		let logo = { src: '/logoAdmin.png', height: 16 };
 		return (
 			<PrimaryNavItem
 				className={className}
