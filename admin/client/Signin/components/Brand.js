@@ -8,8 +8,8 @@ import React from 'react';
 const Brand = function (props) {
 	// Default to the KeystoneJS logo
 	let logo = { src: '/logo.png', width: 205 };
-	if (props.logo) {
-		logo = typeof props.logo === 'string' ? { src: props.logo } : props.logo;
+	if (Keystone.logo) {
+		logo = typeof Keystone.logo === 'string' ? { src: Keystone.logo } : Keystone.logo;
 	}
 	return (
 		<div className="auth-box__col">

@@ -69,9 +69,9 @@ var PrimaryNavigation = React.createClass({
 		);
 	},
 	renderBrand () {
-		let logo = { src: '/logo.png', width: 16 };
-		if (this.props.logo) {
-			logo = typeof this.props.logo === 'string' ? { src: this.props.logo } : this.props.logo;
+		let logo = { src: '/logo.png', height: 16 };
+		if (Keystone.logo) {
+			logo = typeof Keystone.logo === 'string' ? { src: Keystone.logo } : Keystone.logo;
 		}
 		const { brand, currentSectionKey } = this.props;
 		const className = currentSectionKey === 'dashboard' ? 'primary-navbar__brand primary-navbar__item--active' : 'primary-navbar__brand';
