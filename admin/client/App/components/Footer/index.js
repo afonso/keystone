@@ -48,7 +48,7 @@ var Footer = React.createClass({
 					</a>
 					<span> powered by </span>
 					<a
-						href="http://github.com/afonso/keystonejs"
+						href="http://github.com/afonso/keystone.git"
 						target="_blank"
 						className={css(classes.link)}
 						tabIndex="-1"
