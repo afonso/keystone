@@ -77,11 +77,14 @@ var PrimaryNavigation = React.createClass({
 		return (
 			<PrimaryNavItem
 				className={className}
-				label="octicon-home"
 				title={'Dashboard - ' + brand}
 				to={Keystone.adminPath}
 			>
-				<span className="octicon octicon-home" />
+				<img
+					src='/logo.png'
+					height=40
+					alt='FLAGCX'
+				/>
 			</PrimaryNavItem>
 		);
 	},
