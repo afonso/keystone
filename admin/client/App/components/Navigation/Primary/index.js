@@ -70,8 +70,8 @@ var PrimaryNavigation = React.createClass({
 	},
 	renderBrand () {
 		let logo = { src: '/logo.png', width: 205 };
-		if (this.props.logo) {
-			logo = typeof this.props.logo === 'string' ? { src: this.props.logo } : this.props.logo;
+		if (this.props.navlogo) {
+			logo = typeof this.props.navlogo === 'string' ? { src: this.props.navlogo } : this.props.navlogo;
 		}
 		const { brand, currentSectionKey } = this.props;
 		const className = currentSectionKey === 'dashboard' ? 'primary-navbar__brand primary-navbar__item--active' : 'primary-navbar__brand';
