@@ -69,11 +69,8 @@ var PrimaryNavigation = React.createClass({
 		);
 	},
 	renderBrand () {
-		// TODO: support navbarLogo from keystone config
-
 		const { brand, currentSectionKey } = this.props;
 		const className = currentSectionKey === 'dashboard' ? 'primary-navbar__brand primary-navbar__item--active' : 'primary-navbar__brand';
-		let logo = { src: '/logoAdmin.png', height: 16 };
 		return (
 			<PrimaryNavItem
 				className={className}
@@ -82,9 +79,9 @@ var PrimaryNavigation = React.createClass({
 				to={Keystone.adminPath}
 			>
 				<img
-					src={logo.src}
-					width={logo.width ? logo.width : null}
-					height={logo.height ? logo.height : null}
+					src={this.props.navlogo.src}
+					width={this.props.navlogo.width ? this.props.navlogo.width : null}
+					height={this.props.navlogo.height ? this.props.navlogo.height : null}
 					alt={this.props.brand}
 				/>
 			</PrimaryNavItem>

@@ -9,14 +9,7 @@ const Brand = function (props) {
 	// Default to the KeystoneJS logo
 	let logo = { src: '/logo.png', width: 205 };
 	if (props.logo) {
-		// If the logo is set to a string, it's a direct link
 		logo = typeof props.logo === 'string' ? { src: props.logo } : props.logo;
-		// Optionally one can specify the logo as an array, also stating the
-		// wanted width and height of the logo
-		// TODO: Deprecate this
-		if (Array.isArray(logo)) {
-			logo = { src: logo[0], width: logo[1], height: logo[2] };
-		}
 	}
 	return (
 		<div className="auth-box__col">
