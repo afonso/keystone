@@ -85,7 +85,7 @@ var PrimaryNavigation = React.createClass({
 					src={logo.src}
 					width={logo.width ? logo.width : null}
 					height={logo.height ? logo.height : null}
-					alt={props.brand}
+					alt={this.props.brand}
 				/>
 			</PrimaryNavItem>
 		);
