@@ -83,9 +83,9 @@ var PrimaryNavigation = React.createClass({
 				to={Keystone.adminPath}
 			>
 				<img
-					src={this.props.navlogo.src}
-					width={this.props.navlogo.width ? this.props.navlogo.width : null}
-					height={this.props.navlogo.height ? this.props.navlogo.height : null}
+					src={logo.src}
+					width={logo.width ? logo.width : null}
+					height={logo.height ? logo.height : null}
 					alt={this.props.brand}
 				/>
 			</PrimaryNavItem>
