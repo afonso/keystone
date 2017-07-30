@@ -6,133 +6,133 @@ import Portal from '../Portal';
 import theme from '../../../theme';
 
 const canUseDom = !!(
-	typeof window !== 'undefined'
-	&& window.document
-	&& window.document.createElement
+  typeof window !== 'undefined'
+  && window.document
+  && window.document.createElement
 );
 
 class ModalDialog extends Component {
-	constructor () {
-		super();
+  constructor () {
+    super();
 
-		this.handleBackdropClick = this.handleBackdropClick.bind(this);
-		this.handleKeyboardInput = this.handleKeyboardInput.bind(this);
-	}
-	getChildContext () {
-		return {
-			onClose: this.props.onClose,
-		};
-	}
-	componentWillReceiveProps (nextProps) {
-		if (!canUseDom) return;
+    this.handleBackdropClick = this.handleBackdropClick.bind(this);
+    this.handleKeyboardInput = this.handleKeyboardInput.bind(this);
+  }
+  getChildContext () {
+    return {
+      onClose: this.props.onClose,
+    };
+  }
+  componentWillReceiveProps (nextProps) {
+    if (!canUseDom) return;
 
-		// add event listeners
-		if (nextProps.isOpen && nextProps.enableKeyboardInput) {
-			window.addEventListener('keydown', this.handleKeyboardInput);
-		}
-		if (!nextProps.isOpen && nextProps.enableKeyboardInput) {
-			window.removeEventListener('keydown', this.handleKeyboardInput);
-		}
-	}
-	componentWillUnmount () {
-		if (this.props.enableKeyboardInput) {
-			window.removeEventListener('keydown', this.handleKeyboardInput);
-		}
-	}
+    // add event listeners
+    if (nextProps.isOpen && nextProps.enableKeyboardInput) {
+      window.addEventListener('keydown', this.handleKeyboardInput);
+    }
+    if (!nextProps.isOpen && nextProps.enableKeyboardInput) {
+      window.removeEventListener('keydown', this.handleKeyboardInput);
+    }
+  }
+  componentWillUnmount () {
+    if (this.props.enableKeyboardInput) {
+      window.removeEventListener('keydown', this.handleKeyboardInput);
+    }
+  }
 
-	// ==============================
-	// Methods
-	// ==============================
+  // ==============================
+  // Methods
+  // ==============================
 
-	handleKeyboardInput (event) {
-		if (event.keyCode === 27) this.props.onClose();
+  handleKeyboardInput (event) {
+    if (event.keyCode === 27) this.props.onClose();
 
-		return false;
-	}
-	handleBackdropClick (e) {
-		if (e.target !== this.refs.container) return;
+    return false;
+  }
+  handleBackdropClick (e) {
+    if (e.target !== this.refs.container) return;
 
-		this.props.onClose();
-	}
+    this.props.onClose();
+  }
 
-	// ==============================
-	// Renderers
-	// ==============================
+  // ==============================
+  // Renderers
+  // ==============================
 
-	renderDialog () {
-		const {
-			backdropClosesModal,
-			children,
-			isOpen,
-			width,
-		} = this.props;
+  renderDialog () {
+    const {
+      backdropClosesModal,
+      children,
+      isOpen,
+      width,
+    } = this.props;
 
-		if (!isOpen) return <span key="closed" />;
+    if (!isOpen) return <span key="closed" />;
 
-		return (
-			<div
-				className={css(classes.container)}
-				key="open"
-				ref="container"
-				onClick={!!backdropClosesModal && this.handleBackdropClick}
-				onTouchEnd={!!backdropClosesModal && this.handleBackdropClick}
-			>
-				<div className={css(classes.dialog)} style={{ width }} data-screen-id="modal-dialog">
-					{children}
-				</div>
-				<ScrollLock />
-			</div>
-		);
-	}
-	render () {
-		return (
-			<Portal>
-				{this.renderDialog()}
-			</Portal>
-		);
-	}
+    return (
+      <div
+        className={css(classes.container)}
+        key="open"
+        ref="container"
+        onClick={!!backdropClosesModal && this.handleBackdropClick}
+        onTouchEnd={!!backdropClosesModal && this.handleBackdropClick}
+      >
+        <div className={css(classes.dialog)} style={{ width }} data-screen-id="modal-dialog">
+          {children}
+        </div>
+        <ScrollLock />
+      </div>
+    );
+  }
+  render () {
+    return (
+      <Portal>
+        {this.renderDialog()}
+      </Portal>
+    );
+  }
 };
 
 ModalDialog.propTypes = {
-	backdropClosesModal: PropTypes.bool,
-	enableKeyboardInput: PropTypes.bool,
-	isOpen: PropTypes.bool,
-	onClose: PropTypes.func.isRequired,
-	width: PropTypes.number,
+  backdropClosesModal: PropTypes.bool,
+  enableKeyboardInput: PropTypes.bool,
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func.isRequired,
+  width: PropTypes.number,
 };
 ModalDialog.defaultProps = {
-	enableKeyboardInput: true,
-	width: 768,
+  enableKeyboardInput: true,
+  width: 768,
 };
 ModalDialog.childContextTypes = {
-	onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 const classes = StyleSheet.create({
-	container: {
-		alignItems: 'center',
-		backgroundColor: theme.modal.background,
-		boxSizing: 'border-box',
-		display: 'flex',
-		height: '100%',
-		justifyContent: 'center',
-		left: 0,
-		position: 'fixed',
-		top: 0,
-		width: '100%',
-		zIndex: theme.modal.zIndex,
-	},
-	dialog: {
-		height: '100%',
-		overflowY: 'scroll',
-		backgroundColor: 'white',
-		borderRadius: theme.borderRadius.default,
-		paddingBottom: theme.modal.padding.dialog.vertical,
-		paddingLeft: theme.modal.padding.dialog.horizontal,
-		paddingRight: theme.modal.padding.dialog.horizontal,
-		paddingTop: theme.modal.padding.dialog.vertical,
-		position: 'relative',
-	},
+  container: {
+    alignItems: 'center',
+    backgroundColor: theme.modal.background,
+    boxSizing: 'border-box',
+    display: 'flex',
+    height: '100%',
+    justifyContent: 'center',
+    left: 0,
+    position: 'fixed',
+    top: 0,
+    width: '100%',
+    zIndex: theme.modal.zIndex,
+  },
+  dialog: {
+    height: 'auto',
+    overflowY: 'scroll',
+    backgroundColor: 'white',
+    borderRadius: theme.borderRadius.default,
+    paddingBottom: theme.modal.padding.dialog.vertical,
+    paddingLeft: theme.modal.padding.dialog.horizontal,
+    paddingRight: theme.modal.padding.dialog.horizontal,
+    paddingTop: theme.modal.padding.dialog.vertical,
+    position: 'relative',
+  },
 });
 
 export default ModalDialog;
