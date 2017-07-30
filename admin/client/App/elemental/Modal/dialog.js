@@ -123,6 +123,8 @@ const classes = StyleSheet.create({
 		zIndex: theme.modal.zIndex,
 	},
 	dialog: {
+		height: '100%',
+		overflowY: 'scroll',
 		backgroundColor: 'white',
 		borderRadius: theme.borderRadius.default,
 		paddingBottom: theme.modal.padding.dialog.vertical,
